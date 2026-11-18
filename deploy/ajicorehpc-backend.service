@@ -1,0 +1,24 @@
+[Unit]
+Description=AjiCorehpc Manager Backend API Server (FastAPI / Uvicorn)
+After=network.target postgresql.service redis.service
+Wants=postgresql.service redis.service
+
+[Service]
+Type=simple
+User=ajicorehpc
+Group=ajicorehpc
+WorkingDirectory=/opt/ajicorehpc/backend
+EnvironmentFile=/opt/ajicorehpc/config/.env
+ExecStart=/opt/ajicorehpc/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 4 --proxy-headers
+Restart=always
+RestartSec=5s
+LimitNOFILE=65536
+
+# Security Hardening
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target ajicorehpc.target

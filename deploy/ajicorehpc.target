@@ -1,0 +1,7 @@
+[Unit]
+Description=AjiCorehpc Manager Service Target
+Wants=ajicorehpc-backend.service nginx.service
+After=network.target
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,178 @@
+categories:
+  - name: Compilers & Toolchains
+    packages:
+      - name: GCC
+        version: "13.2"
+        description: "GNU Compiler Collection - C, C++, Fortran"
+        method: spack
+      - name: LLVM/Clang
+        version: "17.0"
+        description: "LLVM Compiler Infrastructure"
+        method: spack
+      - name: Intel oneAPI
+        version: "2024.0"
+        description: "Intel oneAPI DPC++/C++ Compiler"
+        method: manual
+      - name: NVIDIA HPC SDK
+        version: "24.1"
+        description: "NVIDIA High Performance Computing SDK"
+        method: manual
+      - name: AOCC
+        version: "4.1"
+        description: "AMD Optimizing C/C++ Compiler"
+        method: manual
+
+  - name: MPI Libraries
+    packages:
+      - name: OpenMPI
+        version: "5.0"
+        description: "Open MPI - Message Passing Interface"
+        method: spack
+      - name: MPICH
+        version: "4.2"
+        description: "MPICH - Message Passing Interface"
+        method: spack
+      - name: Intel MPI
+        version: "2021.11"
+        description: "Intel MPI Library"
+        method: manual
+      - name: MVAPICH2
+        version: "2.3.7"
+        description: "MPI for InfiniBand Clusters"
+        method: spack
+
+  - name: Math & Scientific
+    packages:
+      - name: OpenBLAS
+        version: "0.3.25"
+        description: "Optimized BLAS library"
+        method: spack
+      - name: LAPACK
+        version: "3.12.0"
+        description: "Linear Algebra PACKage"
+        method: spack
+      - name: ScaLAPACK
+        version: "2.2.0"
+        description: "Scalable LAPACK"
+        method: spack
+      - name: FFTW
+        version: "3.3.10"
+        description: "Fastest Fourier Transform in the West"
+        method: spack
+      - name: Intel MKL
+        version: "2024.0"
+        description: "Intel Math Kernel Library"
+        method: manual
+      - name: PETSc
+        version: "3.20"
+        description: "Portable Extensible Toolkit for Scientific Computation"
+        method: spack
+      - name: Eigen
+        version: "3.4.0"
+        description: "C++ Template Library for Linear Algebra"
+        method: spack
+
+  - name: Job Scheduling
+    packages:
+      - name: Slurm
+        version: "23.11"
+        description: "Slurm Workload Manager"
+        method: spack
+      - name: Lmod
+        version: "8.7"
+        description: "Lua-based Environment Modules"
+        method: spack
+      - name: Spack
+        version: "0.21"
+        description: "HPC Package Manager"
+        method: manual
+
+  - name: Containers
+    packages:
+      - name: Apptainer
+        version: "1.2"
+        description: "Container platform for HPC"
+        method: spack
+      - name: Charliecloud
+        version: "0.36"
+        description: "Lightweight HPC containers"
+        method: spack
+
+  - name: Data Science / AI-ML
+    packages:
+      - name: Python (Miniconda)
+        version: "3.12"
+        description: "Python distribution with conda"
+        method: conda
+      - name: TensorFlow
+        version: "2.15"
+        description: "Machine Learning framework"
+        method: conda
+      - name: PyTorch
+        version: "2.2"
+        description: "Deep Learning framework"
+        method: conda
+      - name: JupyterHub
+        version: "4.0"
+        description: "Multi-user Jupyter environment"
+        method: conda
+      - name: R
+        version: "4.3"
+        description: "R statistical computing"
+        method: spack
+
+  - name: Bioinformatics
+    packages:
+      - name: BLAST
+        version: "2.15"
+        description: "Basic Local Alignment Search Tool"
+        method: spack
+      - name: GROMACS
+        version: "2024"
+        description: "Molecular Dynamics simulator"
+        method: spack
+      - name: AlphaFold
+        version: "2.3"
+        description: "Protein structure prediction"
+        method: manual
+      - name: SAMtools
+        version: "1.19"
+        description: "SAM/BAM file utilities"
+        method: spack
+
+  - name: Engineering / CFD
+    packages:
+      - name: OpenFOAM
+        version: "2312"
+        description: "Open Source CFD toolbox"
+        method: spack
+      - name: LAMMPS
+        version: "23Jun2022"
+        description: "Molecular Dynamics simulator"
+        method: spack
+      - name: Quantum ESPRESSO
+        version: "7.2"
+        description: "Electronic structure calculations"
+        method: spack
+
+  - name: Monitoring Tools
+    packages:
+      - name: Prometheus Node Exporter
+        version: "1.7"
+        description: "System metrics exporter"
+        method: manual
+      - name: TAU
+        version: "2.33"
+        description: "Performance analysis toolkit"
+        method: spack
+
+  - name: Storage/File Tools
+    packages:
+      - name: rclone
+        version: "1.65"
+        description: "Cloud storage sync tool"
+        method: manual
+      - name: Globus Connect
+        version: "5.0"
+        description: "High-speed data transfer"
+        method: manual

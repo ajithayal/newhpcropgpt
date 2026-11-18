@@ -1,0 +1,72 @@
+# Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/build/
+.npm
+.eslintcache
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+vendor_private_key.pem
+
+# Deployment Archives & Staging
+ajicorehpc/
+ajicorehpc.zip
+ayalhpc/
+ayalhpc.zip
+*.tar.gz
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# SSL/TLS Certificates
+certs/
+*.key
+*.crt

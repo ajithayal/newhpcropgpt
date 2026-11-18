@@ -1,0 +1,157 @@
+:root {
+  /* ── AYAL HPC Manager Design Tokens: Coastal Blue & Brand Yellow ── */
+  --coastal-50: #EFF6FF;
+  --coastal-100: #DBEAFE;
+  --coastal-200: #BFDBFE;
+  --coastal-500: #3B82F6;
+  --coastal-600: #2563EB;
+  --coastal-700: #1D4ED8;
+  --coastal-800: #1E40AF;
+  --coastal-900: #1E3A8A;
+  
+  /* Restrained AYAL Brand Yellow Accents */
+  --yellow-50: #FEFCE8;
+  --yellow-100: #FEF9C3;
+  --yellow-200: #FEF08A;
+  --yellow-400: #FACC15;
+  --yellow-500: #EAB308;
+  --yellow-600: #CA8A04;
+  --yellow-700: #A16207;
+
+  /* Neutrals & Surfaces */
+  --bg-canvas: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border-card: #E2E8F0;
+  --border-subtle: #F1F5F9;
+  
+  /* Typography */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+
+  /* Status Colors */
+  --status-online: #16A34A;
+  --status-warning: #D97706;
+  --status-error: #DC2626;
+  --status-idle: #3B82F6;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 10px 15px -3px rgba(37, 99, 235, 0.08), 0 4px 6px -4px rgba(37, 99, 235, 0.04);
+
+  /* Fonts */
+  --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular figures for telemetry, numbers, percentages, and timestamps */
+.tabular-nums,
+table,
+.ant-table,
+.ant-statistic-content-value,
+.telemetry-val {
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  text-decoration: none;
+  color: var(--coastal-600);
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--coastal-700);
+}
+
+#root {
+  height: 100vh;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Micro-interaction transitions */
+.ant-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease !important;
+}
+
+.ant-btn {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ant-table-row {
+  transition: background-color 0.15s ease !important;
+}
+
+/* AYAL Brand Accent Ribbon */
+.ayal-accent-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  background: var(--yellow-50);
+  border: 1px solid var(--yellow-200);
+  color: var(--yellow-700);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* HPC Category Select Dropdown */
+.hpc-category-popup {
+  background: #FFFFFF !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+.hpc-category-popup .ant-select-item {
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  margin: 2px 4px !important;
+  transition: background 0.15s ease !important;
+}
+
+.hpc-category-popup .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #EFF6FF !important;
+}
+
+.hpc-category-popup .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #F8FAFC !important;
+}
+

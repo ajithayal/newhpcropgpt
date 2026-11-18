@@ -1,0 +1,78 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ayalhpc-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ajicorehpc
+      POSTGRES_USER: ajicorehpc
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-ajicorehpc_secret_2026}
+    volumes:
+      - ${INSTALL_PATH:-./data}/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ajicorehpc"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: ayalhpc-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-ajicorehpc_redis_2026}
+    volumes:
+      - ${INSTALL_PATH:-./data}/redis:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-ajicorehpc_redis_2026}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ayalhpc-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+asyncpg://ajicorehpc:${DB_PASSWORD:-ajicorehpc_secret_2026}@postgres:5432/ajicorehpc
+      REDIS_URL: redis://:${REDIS_PASSWORD:-ajicorehpc_redis_2026}@redis:6379/0
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production-use-openssl-rand-hex-32}
+      AJICOREHPC_SECRET_KEY: ${AJICOREHPC_SECRET_KEY:-change-me-in-production-use-openssl-rand-hex-32}
+      LICENSE_SIGNING_SECRET: ${LICENSE_SIGNING_SECRET:-change-me-generate-with-openssl-rand-hex-32}
+      INSTALL_PATH: ${INSTALL_PATH:-/opt/ayalhpc}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:3000}
+    volumes:
+      - ${INSTALL_PATH:-./data}/config:/app/config
+      - ${INSTALL_PATH:-./data}/logs:/app/logs
+      - ${INSTALL_PATH:-./data}/uploads:/app/uploads
+      - ${INSTALL_PATH:-./data}/packages:/app/packages
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ayalhpc-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  postgres_data:
+  redis_data:
